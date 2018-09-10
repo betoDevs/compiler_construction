@@ -8,6 +8,7 @@ import java.util.Hashtable;
 import java.util.Map;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 
 
@@ -21,22 +22,35 @@ public class Lexer{
 		}
 
 		String s = createToken("10", 1, "prog");
-		// System.out.println(s);
-		// ArrayList<String> j = read("test.txt");
-
+		System.out.println(s);
+		Map<List<String>, Integer> j = read("test.txt");
 	}
 
-	// public static ArrayList<String> read(String path){
-	// 	ArrayList<String> s = new ArrayList<>();
-	// 	Scanner read = new Scanner(new File(path));
-	// 	read.useDelimiter(" ");
-	// 	int lineCount = 1;
-	// 	while(read.hasNext()){
-	// 		s.add(read.next());
-	// 	}
-	// 	read.close();
-	// 	return s;
-	// }
+	public static Map<List<String>, Integer> read(String path){
+		Map<List<String>, Integer> s = new HashMap<>();
+		String current;
+		File file = new File(path);
+		try {
+			Scanner read = new Scanner(file);
+			//read.useDelimiter(" ");
+			int lineCount = 1;
+			while(read.hasNext()){
+				current = read.nextLine();
+				List<String> tmp = new ArrayList<String>(Arrays.asList(current.split(" ")));
+				s.put(tmp, lineCount);
+				System.out.println("Adding: " + tmp + " at line " + lineCount);
+				lineCount++;
+				tmp.clear();
+			}
+			read.close();
+			return s;
+		}
+		catch(IOException e)
+		{
+			System.out.println("Something wrong with path");
+			return s;
+		}
+	}
 
 	//map keywork to designated token
 	public static Map<Integer, String> createKeyWordDict(){
