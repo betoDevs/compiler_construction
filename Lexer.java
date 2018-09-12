@@ -24,6 +24,7 @@ public class Lexer{
 		String s = createToken("10", 1, "prog");
 		System.out.println(s);
 		Map<List<String>, Integer> j = read("test.txt");
+		System.out.println(classifyString(j));
 	}
 
 	public static Map<List<String>, Integer> read(String path){
@@ -109,5 +110,17 @@ public class Lexer{
 	//needs to format the output to match indentation
 	public static String createToken(String id, int line, String token){
 		return "(Tok: " + id + " line= " + Integer.toString(line) + " str= \""+token+"\")";
+	}
+
+	public static String classifyString(Map<List<String>,Integer> s, Map<Integer,String> dict){
+		String id, token;
+		//Iterate through 's'
+		//check for ' "" ' string symbol
+		//check for id
+		//check for integer 
+		//check for float
+		//if not string, check for comment and 'continue'
+		//check against keywords
+		//call  and return 'createToken' function
 	}
 }
