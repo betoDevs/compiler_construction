@@ -10,4 +10,14 @@ test//y//ti
 "//" //"..."." " "jfdsjafi,;ods afsdfe" "jjjiodf
 "this // is a test" // this should "not show up"
 ".........",;
-<>{}[]()*^:.=-+/
+<>{}[]()*^:.==-+/
+
+->
+>=
+<=
+==
+>>
+<<
+= =
+<>=
+><
